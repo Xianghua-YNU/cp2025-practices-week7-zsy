@@ -11,8 +11,19 @@ def creat_frame():
     Returns:
         None
     """
-    # 学生需要在此处实现代码
-    pass
+    # 创建一个字典来模拟数据
+    data = {
+    '姓名': ['张三', '李四', '王五', '赵六', '陈七'],
+    '年龄': [25, 30, None, 22, 28],
+    '成绩': [85.5, 90.0, 78.5, 88.0, 92.0],
+    '城市': ['北京', '上海', '广州', '深圳', '上海']
+    }
+
+    # 将字典转换为 DataFrame
+    df = pd.DataFrame(data)
+
+    # 将 DataFrame 保存为 CSV 文件
+    df.to_csv('data/data.csv', index=False, encoding='utf-8')
 
 def load_data():
     """任务1: 读取数据文件"""
