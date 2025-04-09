@@ -28,7 +28,7 @@ def creat_frame():
 def load_data():
     """任务1: 读取数据文件"""
     # 学生需要在此处实现代码
-    df = pd.read_csv('data/data.csv')
+    df = pd.read_csv('data.csv')
     return df
 
 def show_basic_info(data):
@@ -52,8 +52,9 @@ def analyze_statistics(data):
     statistics = data[numerical_columns].describe()
     print("\n数值列的统计分析：")
     print(statistics)
+    print(f"\n成绩 列的均值: {statistics.loc['mean', '成绩']}")
+    
     return statistics
-
 
 def visualize_data(data, column_name='成绩'):
     """任务6: 数据可视化"""
@@ -72,7 +73,7 @@ def visualize_data(data, column_name='成绩'):
 def save_processed_data(data):
     """任务7: 保存处理后的数据"""
     # 学生需要在此处实现代码
-    data.to_csv('data/processed_data.csv', index=False, encoding='utf-8')
+    data.to_csv('processed_data.csv', index=False, encoding='utf-8')
 
 
 def main():
