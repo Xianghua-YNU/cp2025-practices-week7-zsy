@@ -25,7 +25,7 @@ def problem1():
         None (直接显示绘图窗口)
     """
     # TODO: 定义符号变量 x
-     x = sp.symbols('x')
+    x = sp.symbols('x')
     
     # TODO: 定义要绘制的表达式
     #expr = sp.cos(sp.tan(sp.pi * x))
