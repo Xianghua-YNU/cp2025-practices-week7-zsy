@@ -52,7 +52,8 @@ def analyze_statistics(data):
     statistics = data[numerical_columns].describe()
     print("\n数值列的统计分析：")
     print(statistics)
-    print(f"\n成绩 列的均值: {statistics.loc['mean', '成绩']}")
+    print("\n成绩 列的均值: {:.2f}".format(statistics.loc['mean', '成绩']))
+    print("年龄 列的均值: {:.2f}".format(statistics.loc['mean', '年龄']))
     
     return statistics
 
