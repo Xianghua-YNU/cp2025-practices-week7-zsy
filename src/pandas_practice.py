@@ -42,8 +42,8 @@ def show_basic_info(data):
 def handle_missing_values(data):
     """任务3: 处理缺失值"""
     # 学生需要在此处实现代码
-    cleaned_data = data.dropna()
-    return cleaned_data
+    data['年龄'].fillna(data['年龄'].mean(), inplace=True)
+    return data
 
 def analyze_statistics(data):
     """任务4: 统计分析数值列"""
