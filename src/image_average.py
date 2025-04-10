@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.ndimage as sim
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 def create_small_filter():
     """
