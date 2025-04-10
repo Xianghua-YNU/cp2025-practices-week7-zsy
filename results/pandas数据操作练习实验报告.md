@@ -59,45 +59,17 @@ def visualize_data(data, column_name='成绩'):
 
 ### 任务 1: 读取数据
 展示读取的数据的基本信息（如列名、行数等）。
-数据的基本信息：
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 5 entries, 0 to 4
-Data columns (total 4 columns):
- #   Column  Non-Null Count  Dtype  
----  ------  --------------  -----  
- 0   姓名    5 non-null      object 
- 1   年龄    4 non-null      float64
- 2   成绩    5 non-null      float64
- 3   城市    5 non-null      object 
-dtypes: float64(2), object(2)
-memory usage: 200.0+ bytes
+![6e31c3f73176cc2984a1b32a4d860d7](https://github.com/user-attachments/assets/b5b5c94a-9bea-44a6-ac47-86bfb50dc424)
+
 
 ### 任务 2: 查看数据基本信息
 粘贴数据的基本信息输出。
-数据的基本信息：
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 5 entries, 0 to 4
-Data columns (total 4 columns):
- #   Column  Non-Null Count  Dtype  
----  ------  --------------  -----  
- 0   姓名    5 non-null      object 
- 1   年龄    4 non-null      float64
- 2   成绩    5 non-null      float64
- 3   城市    5 non-null      object 
-dtypes: float64(2), object(2)
-memory usage: 200.0+ bytes
+![6e31c3f73176cc2984a1b32a4d860d7](https://github.com/user-attachments/assets/b5b5c94a-9bea-44a6-ac47-86bfb50dc424)
+
 ### 任务 3: 处理缺失值
 说明处理后缺失值的情况。
-数值列的统计分析：
-               年龄        成绩
-count  5.000000  5.000000
-mean  26.200000 88.875000
-std    3.288462  5.507528
-min   22.000000 78.500000
-25%   24.000000 85.500000
-50%   26.200000 88.000000
-75%   28.500000 90.000000
-max   30.000000 92.000000
+![812c991e63a75e18b4670402b96aff4](https://github.com/user-attachments/assets/91dada66-e857-4c07-bc50-d04371f42e43)
+
 ### 任务 4: 数据统计分析
 列出数值列的均值、中位数和标准差。
 Mean of the 'Score' column: 86.80
