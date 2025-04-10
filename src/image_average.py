@@ -41,15 +41,15 @@ def process_image(input_file):
         完成以下步骤的实现代码
     """
     # 1. 读取图像 - 使用plt.imread()函数
-    img = None  # 学生需要实现
+    img = img = plt.imread(input_file)
     
     # 2. 创建滤波器 - 调用已实现的函数
-    small_filter = None  # 学生需要调用create_small_filter()
-    large_filter = None  # 学生需要调用create_large_filter()
+    small_filter = create_small_filter()
+    large_filter = create_large_filter()
     
     # 3. 应用卷积 - 使用sim.convolve()函数
-    small_result = None  # 学生需要实现小滤波器卷积读入的图像
-    large_result = None  # 学生需要实现大滤波器卷积读入的图像
+    small_result = sim.convolve(img, small_filter)
+    large_result = sim.convolve(img, large_filter)
     
     # 4. 显示结果 - 使用matplotlib绘制对比图
     # 创建画布
