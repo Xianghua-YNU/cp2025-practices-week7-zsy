@@ -10,7 +10,8 @@ def create_small_filter():
         numpy.ndarray: 3×3的滤波器矩阵，每个元素值为1/9
     """
     # 学生需要在此实现代码
-    pass
+    small_filter = np.ones((3, 3)) / 9
+    return small_filter
 
 def create_large_filter():
     """
@@ -20,7 +21,8 @@ def create_large_filter():
         numpy.ndarray: 15×15的滤波器矩阵，每个元素值为1/225
     """
     # 学生需要在此实现代码
-    pass
+    large_filter = np.ones((15, 15)) / 225
+    return large_filter
 
 def process_image(input_file):
     """
@@ -55,23 +57,29 @@ def process_image(input_file):
     
     # 显示原始图像
     plt.subplot(1, 3, 1)
+
     # 学生需要添加显示原始图像的代码
     plt.title('Original Image')
-    
+    plt.imshow(img, cmap='gray')
+    plt.axis('off')
     # 显示3×3滤波结果
     plt.subplot(1, 3, 2)
+    
     # 学生需要添加显示小滤波器结果的代码
     plt.title('3×3 Filter Result')
-    
+    plt.imshow(small_result, cmap='gray')
+    plt.axis('off')
     # 显示15×15滤波结果
     plt.subplot(1, 3, 3)
     # 学生需要添加显示大滤波器结果的代码
     plt.title('15×15 Filter Result')
-    
+    plt.imshow(large_result, cmap='gray')
+    plt.axis('off')
     # 调整布局并显示
     plt.tight_layout()
     plt.show()
-
+    
+    plt.savefig('processed_image.png', dpi=300)
 if __name__ == "__main__":
     # 主程序入口 - 学生需要确保data/bwCat.tif文件存在
     process_image('data/bwCat.tif')
