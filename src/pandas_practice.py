@@ -80,7 +80,7 @@ def save_processed_data(data):
 def main():
     """主函数，执行所有数据处理流程"""
     # 生成data.csv文件
-    create_frame() 
+    creat_frame() 
     
     # 学生需要在此处组织代码流程
     df = load_data()
