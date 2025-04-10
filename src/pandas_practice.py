@@ -50,7 +50,7 @@ def analyze_statistics(data):
     # 学生需要在此处实现代码
     numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns
     statistics = data[numerical_columns].describe()
-   print("\n数值列的统计分析：")
+    print("\n数值列的统计分析：")
     print(statistics)
     print("\n成绩 列的均值: {:.2f}".format(statistics.loc['mean', '成绩']))
     print("年龄 列的均值: {:.2f}".format(statistics.loc['mean', '年龄']))
