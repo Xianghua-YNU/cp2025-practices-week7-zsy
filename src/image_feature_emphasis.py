@@ -15,7 +15,12 @@ def load_stress_fibers():
         使用np.loadtxt加载文本格式的数据
     """
     # 学生需要实现：使用np.loadtxt加载数据文件
-    pass
+    try:
+        data = np.loadtxt('data/stressFibers.txt')
+        return data
+    except FileNotFoundError:
+        print("数据文件未找到，请确保文件路径正确")
+        return None
 
 def create_gauss_filter():
     """
@@ -32,7 +37,12 @@ def create_gauss_filter():
     # 学生需要实现：
     # 1. 使用np.arange和np.meshgrid创建坐标网格
     # 2. 根据公式计算高斯函数值
-    pass
+    v = np.arange(-25, 26)
+    X, Y = np.meshgrid(v, v)
+    sigma_x = np.sqrt(5)
+    sigma_y = np.sqrt(45)
+    gauss_filter = np.exp(-0.5 * (X**2 / sigma_x**2 + Y**2 / sigma_y**2))
+    return gauss_filter
 
 def create_combined_filter(gauss_filter):
     """
@@ -51,7 +61,9 @@ def create_combined_filter(gauss_filter):
     # 学生需要实现：
     # 1. 定义3x3拉普拉斯滤波器
     # 2. 使用scipy.ndimage.convolve进行卷积
-    pass
+    laplace_filter = np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]])
+    combined_filter = sim.convolve(gauss_filter, laplace_filter)
+    return combined_filter
 
 def plot_filter_surface(filter, title):
     """
@@ -69,7 +81,12 @@ def plot_filter_surface(filter, title):
     # 1. 创建fig和3D axes
     # 2. 使用plot_surface绘制表面
     # 3. 设置标题并显示图形
-    pass
+    fig = plt.figure(figsize=(10, 6))
+    ax = fig.add_subplot(111, projection='3d')
+    X, Y = np.meshgrid(np.arange(filter.shape[1]), np.arange(filter.shape[0]))
+    ax.plot_surface(X, Y, filter, cmap='viridis')
+    ax.set_title(title)
+    plt.show()
 
 def process_and_display(stressFibers, filter, vmax_ratio=0.5):
     """
@@ -87,7 +104,12 @@ def process_and_display(stressFibers, filter, vmax_ratio=0.5):
     # 1. 使用scipy.ndimage.convolve应用滤波器
     # 2. 使用plt.imshow显示结果，设置vmin=0, vmax=vmax_ratio*最大值
     # 3. 添加colorbar并显示图形
-    pass
+    processed_image = sim.convolve(stressFibers, filter)
+    plt.figure(figsize=(10, 6))
+    plt.imshow(processed_image, cmap='gray', vmin=0, vmax=vmax_ratio * processed_image.max())
+    plt.colorbar()
+    plt.show()
+    return processed_image
 
 def main():
     """
@@ -109,19 +131,37 @@ def main():
     # 1. 使用plt.imshow显示滤波器
     # 2. 添加标题和colorbar
     # 3. 调用plot_filter_surface绘制3D图
-    
+    plt.imshow(gauss_filter, cmap='gray')
+    plt.colorbar()
+    plt.title('Gaussian Filter')
+    plt.savefig('gaussian_filter.png')
+    plt.show()
+    plot_filter_surface(gauss_filter, 'Gaussian Filter 3D Surface')
+
     # 任务(b): 创建组合滤波器并比较
     combined_filter = create_combined_filter(gauss_filter)
     # 学生需要添加显示代码
-    
+    plt.imshow(combined_filter, cmap='gray', origin='lower')
+    plt.colorbar()
+    plt.title('Combined Filter')
+    plt.savefig('combined_filter.png')
+    plt.show()
+    plot_filter_surface(combined_filter, 'Combined Filter 3D Surface')
+
     # 任务(c): 应用垂直滤波器
     # 学生需要添加处理代码
-    
+    process_and_display(stressFibers, combined_filter)
     # 任务(d): 应用水平滤波器
     # 学生需要添加处理代码
-    
+    combined_filter2 = sim.rotate(combined_filter, angle=90)
+    process_and_display(stressFibers, combined_filter2, vmax_ratio=0.4)
     # 选做: 45度方向滤波器
     # 学生需要添加处理代码
+    combined_filter45 = sim.rotate(combined_filter, angle=45)
+    process_and_display(stressFibers, combined_filter45)
+    combined_filter135 = sim.rotate(combined_filter, angle=135)
+    process_and_display(stressFibers, combined_filter135)
+
 
 if __name__ == "__main__":
     main()
