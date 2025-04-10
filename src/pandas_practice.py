@@ -42,7 +42,7 @@ def show_basic_info(data):
 def handle_missing_values(data):
     """任务3: 处理缺失值"""
     # 学生需要在此处实现代码
-    data['Age'].fillna(data['Age'].mean(), inplace=True)
+    data['年龄'].fillna(data['年龄'].mean(), inplace=True)
     return data
 
 def analyze_statistics(data):
@@ -50,10 +50,10 @@ def analyze_statistics(data):
     # 学生需要在此处实现代码
     numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns
     statistics = data[numerical_columns].describe()
-    print("\nStatistical analysis of numerical columns:")
+   print("\n数值列的统计分析：")
     print(statistics)
-    print("\nMean of the 'Score' column: {:.2f}".format(statistics.loc['mean', 'Score']))
-    print("Mean of the 'Age' column: {:.2f}".format(statistics.loc['mean', 'Age']))
+    print("\n成绩 列的均值: {:.2f}".format(statistics.loc['mean', '成绩']))
+    print("年龄 列的均值: {:.2f}".format(statistics.loc['mean', '年龄']))
     
     return statistics
 
@@ -87,7 +87,7 @@ def main():
     show_basic_info(df)
     cleaned_df = handle_missing_values(df)
     analyze_statistics(cleaned_df)
-    visualize_data(cleaned_df, 'Score')
+    visualize_data(cleaned_df, '成绩')
     save_processed_data(cleaned_df)
 
 if __name__ == "__main__":
